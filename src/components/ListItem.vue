@@ -12,7 +12,11 @@
 					name="username"
 					:checked="isAllUsersSelected || isUserSelected"
 				>
-				<img :src="user.avatar" />
+				<img
+					:src="user.avatar"
+					alt="avatar"
+					@error="onImageLoadError"
+				/>
 				<div>
 					<p>{{ user.name}}</p>
 					<a
@@ -72,6 +76,7 @@ export default {
 			isUserSelected: false,
 			selectedItemClassName: 'account-users-list__list-item--selected',
 			isEditModalOpen: false,
+			isImageLoaded: false,
 		};
 	},
 	computed: {
@@ -130,6 +135,9 @@ export default {
 			// Another just removing directly from HTML
 			//const element = document.getElementById(`${this.user.id}`)
 			//element.parentNode.remove(element)
+		},
+		onImageLoadError(e) {
+			e.target.src = require('../assets/img/defaultAvatar.jpg');
 		},
 	},
 }
