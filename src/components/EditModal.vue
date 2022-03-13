@@ -3,33 +3,48 @@
 	class="account-users-edit-modal"
 	:class="!modalCloseStatus ? 'account-users-edit-modal--active' : ''"
 >
-	<div>
-		<p>Edit user modal</p>
-		<input
-			v-model="userModel.name"
-			type="text"
-			name="name"
-			placeholder="Fullname"
-		/>
-		<input
-			v-model="userModel.email"
-			type="text"
-			name="email"
-			placeholder="Email"
-		/>
-		<select
-			v-model="userModel.role"
-			name="permission"
-			id="permission"
-		>
-			<option
-				v-for="permission in permissions"
-				:key="permission.id"
-				:value="permission.id"
+	<div class="account-users-edit-modal__container">
+		<h2>Edit user modal</h2>
+
+		<div>
+			<input
+				v-model="userModel.name"
+				type="text"
+				name="name"
+				placeholder="Fullname"
+				@input="validateNameOnChanged"
+			/>
+			<p v-if="!isNameValid">Username must be filled!</p>
+		</div>
+		<div>
+			<input
+				v-model="userModel.email"
+				type="text"
+				name="email"
+				placeholder="Email"
+				@input="validateEmailOnChanged"
+			/>
+			<p
+				v-if="!isEmailValid"
 			>
-				{{ permission.value }}
-			</option>
-		</select>
+				Email must be filled and must be in correct format!
+			</p>
+		</div>
+		<div>
+			<select
+				v-model="userModel.role"
+				name="permission"
+				id="permission"
+			>
+				<option
+					v-for="permission in permissions"
+					:key="permission.id"
+					:value="permission.id"
+				>
+					{{ permission.value }}
+				</option>
+			</select>
+		</div>
 
 		<button
 			type="button"
@@ -59,7 +74,7 @@ export default {
 		},
 		isModalOpen: {
 			default: false,
-		}
+		},
 	},
 	data() {
 		return {
@@ -83,6 +98,8 @@ export default {
 					value: 'External reviewer',
 				},
 			],
+			isNameValid: true,
+			isEmailValid: true,
 		}
 	},
 	watch: {
@@ -99,9 +116,34 @@ export default {
 			document.body.style.overflowY = 'auto';
 		},
 		onEditUser() {
+			if(!this.isNameValid || !this.isEmailValid) {
+				return
+			}
+
 			this.modalCloseStatus = true;
 			this.$emit("onUserUpdated", this.userModel);
 			document.body.style.overflowY = 'auto';
+		},
+		validateNameOnChanged() {
+			if(!this.userModel.name.trim()) {
+				this.isNameValid = false;
+				return
+			}
+
+			this.isNameValid = true;
+			return
+		},
+		validateEmailOnChanged() {
+			if(
+				!this.userModel.email.trim() ||
+				!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.userModel.email)) //eslint-disable-line
+			) {
+				this.isEmailValid = false;
+				return
+			}
+
+			this.isEmailValid = true;
+			return
 		},
 	},
 }

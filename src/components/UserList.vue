@@ -46,8 +46,11 @@
 				</p>
 			</div>
 		</div>
-		<div v-for="user in loadedUsers" :key="user.id">
-			<ListItem
+		<div
+			v-for="user in loadedUsers"
+			:key="user.id"
+		>
+			<list-item
 				:user="user"
 				:is-all-users-selected="isAllUsersSelected"
 				@handle-user-selection="handleUserSelection"
@@ -56,7 +59,7 @@
 			/>
 		</div>
 	</div>
-	<EditModal
+	<edit-modal
 		:edited-user="editedUser"
 		:is-modal-open="isModalOpen"
 		@on-user-updated="onUserUpdated"
@@ -66,7 +69,9 @@
 <script>
 import EditModal from './EditModal.vue';
 import ListItem from './ListItem.vue';
+
 import axios from 'axios';
+
 export default {
   components: {
 		ListItem,
@@ -112,7 +117,7 @@ export default {
 			});
 			this.orderUsersByPermissions();
 			this.getNextUsers();
-		}
+		},
 	},
 	methods: {
 		async getAllUsers() {
@@ -145,7 +150,7 @@ export default {
 		},
 		onOrderingClicked(e) {
 			this.users = this.users.reverse();
-			this.getInitialUsersForUI()
+			this.getInitialUsersForUI();
 
 			this.isDescending = !this.isDescending;
 
@@ -209,6 +214,5 @@ export default {
 			this.isModalOpen = !this.isModalOpen;
 		},
 	},
-
 }
 </script>

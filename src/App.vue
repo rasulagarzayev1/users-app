@@ -1,20 +1,20 @@
 <template>
-	<Header
+	<page-header
 		@user-serached="onUserSearched"
 	/>
-	<UserList
+	<user-list
 		:serached-word="serachedWord"
 	/>
 </template>
 
 <script>
-import Header from './components/Header.vue';
+import PageHeader from './components/PageHeader.vue';
 import UserList from './components/UserList.vue';
 
 export default {
 	name: 'App',
 	components: {
-		Header,
+		PageHeader,
 		UserList,
 	},
 	data() {

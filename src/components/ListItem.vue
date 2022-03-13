@@ -1,7 +1,7 @@
 <template>
     <div
-		:id="user.id"
 		class="account-users-list__list-item"
+		:id="user.id"
 		:class="isUserSelected || isAllUsersSelected ? 'account-users-list__list-item--selected' : ''"
 		@click="onUserSlected"
 	>
@@ -14,7 +14,9 @@
 				<img :src="user.avatar" />
 				<div>
 					<p>{{ user.name}}</p>
-					<a :href="`mailto: ${user.email}`">
+					<a
+						:href="`mailto: ${user.email}`"
+					>
 						{{ user.email }}
 					</a>
 				</div>
@@ -82,7 +84,7 @@ export default {
 				default:
 					return this.user.role;
 			}
-		}
+		},
 	},
 	methods: {
 		onUserSlected (e) {
