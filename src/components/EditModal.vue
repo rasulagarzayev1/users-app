@@ -49,6 +49,7 @@
 		<button
 			type="button"
 			class="account-users-edit-modal__edit-btn"
+			v-wave="vaweStyle"
 			@click="onEditUser"
 		>
 			Edit
@@ -56,6 +57,7 @@
 		<button
 			type="button"
 			class="account-users-edit-modal__close-btn"
+			v-wave="vaweStyle"
 			@click="onCloseModal"
 		>
 			Close
@@ -76,6 +78,7 @@ export default {
 			default: false,
 		},
 	},
+	inject: ['vaweStyle'],
 	data() {
 		return {
 			userModel: {},

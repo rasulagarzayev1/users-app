@@ -8,6 +8,7 @@
 			<p>{{ selectedUsersCount }} users selected</p>
 			<button
 				v-if="selectedUsersCount===1"
+				v-wave="vaweStyle"
 				@click="onUserEditClicked"
 			>
 				<img src="../assets/img/edit.svg" />
@@ -15,6 +16,7 @@
 			</button>
 			<button
 				v-if="selectedUsersCount!==0"
+				v-wave="vaweStyle"
 				@click="onUserDeleteClicked"
 			>
 				<img src="../assets/img/delete.svg" />
@@ -84,6 +86,7 @@ export default {
 			default: '',
 		},
 	},
+	inject: ['vaweStyle'],
 	data () {
 		return {
 			loadedUsers:[],

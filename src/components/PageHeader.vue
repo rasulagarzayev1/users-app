@@ -15,6 +15,7 @@
 			</label>
 			<button
 				type="button"
+				v-wave="vaweStyle"
 				@click="onUserSearched"
 			>
 				Connect users
@@ -26,6 +27,7 @@
 <script>
 export default {
 	name: 'PageHeader',
+	inject: ['vaweStyle'],
 	data() {
 		return {
 			searchedWord: '',
@@ -33,6 +35,10 @@ export default {
 	},
 	methods: {
 		onUserSearched() {
+			if (!this.searchedWord.trim()) {
+				return
+			}
+
 			this.$emit("userSerached", this.searchedWord);
 		},
 	},

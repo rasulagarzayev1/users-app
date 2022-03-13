@@ -3,6 +3,7 @@
 		class="account-users-list__list-item"
 		:id="user.id"
 		:class="isUserSelected || isAllUsersSelected ? 'account-users-list__list-item--selected' : ''"
+		v-wave="vaweStyle"
 		@click="onUserSlected"
 	>
 			<div class="user-info-part">
@@ -35,6 +36,7 @@
 				>
 					<button
 						type="button"
+						v-wave="vaweStyle"
 						@click="onEditUserClicked"
 					>
 						<img src="../assets/img/edit.svg" />
@@ -42,6 +44,7 @@
 					</button>
 					<button
 						type="button"
+						v-wave="vaweStyle"
 						@click="onDeleteUserClicked"
 					>
 						<img src="../assets/img/delete.svg" />
@@ -63,6 +66,7 @@ export default {
 			default: false,
 		},
 	},
+	inject: ['vaweStyle'],
 	data () {
 		return {
 			isUserSelected: false,

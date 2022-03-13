@@ -241,9 +241,15 @@ button {
 					color: #4A5568;
 					display: flex;
 					align-items: center;
-		
-					img {
-						padding-right: 9px;
+
+					&:first-of-type {
+						img {
+							padding-right: 9px;
+						}
+					}
+
+					&:last-of-type {
+						padding: 0 8px;
 					}
 				}
 			}

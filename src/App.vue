@@ -22,6 +22,15 @@ export default {
 			serachedWord: '',
 		};
 	},
+	provide() {
+		return {
+			vaweStyle: {
+				color: 'black',
+				startingOpacity: 0.3,
+				easing: 'ease-in',
+			},
+		}
+	},
 	methods: {
 		onUserSearched(word) {
 			this.serachedWord = word;
