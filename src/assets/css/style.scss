@@ -85,6 +85,10 @@ button {
 	box-sizing: border-box;
 	overflow-x: auto;
 
+	&__user-not-found {
+		text-align: center;
+	}
+
 	&__controls {
 		display: flex;
 		align-items: baseline;

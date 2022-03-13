@@ -60,6 +60,12 @@
 				@on-edit-modal-opened="handleUserEdit"
 			/>
 		</div>
+		<p
+			v-if="users.length === 0"
+			class="account-users-list__user-not-found"
+		>
+			No user found
+		</p>
 	</div>
 	<edit-modal
 		:edited-user="editedUser"
