@@ -86,6 +86,13 @@ export default {
 			}
 		},
 	},
+	watch: {
+		'isAllUsersSelected': function() {
+			if(this.isAllUsersSelected) {
+				this.isUserSelected = false;
+			}
+		},
+	},
 	methods: {
 		onUserSlected (e) {
 			const selectedItem = e.currentTarget;
