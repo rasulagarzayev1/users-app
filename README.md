@@ -3,7 +3,6 @@
 ```
 https://rasulagarzayev1.github.io/users-app/
 
-
 ## Project setup
 ```
 npm install
