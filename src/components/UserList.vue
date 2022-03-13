@@ -11,7 +11,7 @@
 				v-wave="vaweStyle"
 				@click="onUserEditClicked"
 			>
-				<img src="../assets/img/edit.svg" />
+				<img :src="require('../assets/img/edit.svg')" />
 				Edit
 			</button>
 			<button
@@ -19,7 +19,7 @@
 				v-wave="vaweStyle"
 				@click="onUserDeleteClicked"
 			>
-				<img src="../assets/img/delete.svg" />
+				<img :src="require('../assets/img/delete.svg')" />
 				Delete
 			</button>
 		</div>
@@ -42,7 +42,7 @@
 				<p>
 					Permissions
 					<img
-						src="../assets/img/ordering.svg"
+						:src="require('../assets/img/ordering.svg')"
 						@click="onOrderingClicked"
 					/>
 				</p>
@@ -69,10 +69,10 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import EditModal from './EditModal.vue';
 import ListItem from './ListItem.vue';
-
-import axios from 'axios';
 
 export default {
   components: {

@@ -39,7 +39,7 @@
 						v-wave="vaweStyle"
 						@click="onEditUserClicked"
 					>
-						<img src="../assets/img/edit.svg" />
+						<img :src="require('../assets/img/edit.svg')" />
 						Edit
 					</button>
 					<button
@@ -47,7 +47,7 @@
 						v-wave="vaweStyle"
 						@click="onDeleteUserClicked"
 					>
-						<img src="../assets/img/delete.svg" />
+						<img :src="require('../assets/img/delete.svg')" />
 					</button>
 				</div>
 			</div>
