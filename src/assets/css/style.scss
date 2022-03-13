@@ -83,6 +83,7 @@ button {
 	border-radius: 8px;
 	padding: 0 16px 16px 16px;
 	box-sizing: border-box;
+	overflow-x: auto;
 
 	&__controls {
 		display: flex;

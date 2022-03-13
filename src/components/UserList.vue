@@ -8,6 +8,7 @@
 			<p>{{ selectedUsersCount }} users selected</p>
 			<button
 				v-if="selectedUsersCount===1"
+				@click="onUserEditClicked"
 			>
 				<img src="../assets/img/edit.svg" />
 				Edit
@@ -202,8 +203,12 @@ export default {
 				}
 				return user;
 			})
-		}
-	}
+		},
+		onUserEditClicked() {
+			this.editedUser = this.loadedUsers.find(user => user.id === this.selectedUsersIds[0]);
+			this.isModalOpen = !this.isModalOpen;
+		},
+	},
 
 }
 </script>
