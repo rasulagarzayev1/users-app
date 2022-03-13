@@ -120,12 +120,14 @@ export default {
 		this.getNextUsers();
 	},
 	watch: {
-		'serachedWord': function() {			
+		'serachedWord': function() {
+			const originalList = [...this.users];		
 			this.users = this.users.filter((user) => {
 				return user.name.includes(this.serachedWord) || user.email.includes(this.serachedWord)
 			});
 			this.orderUsersByPermissions();
 			this.getNextUsers();
+			this.users = [...originalList];
 		},
 	},
 	methods: {
