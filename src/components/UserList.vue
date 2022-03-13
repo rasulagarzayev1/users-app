@@ -102,8 +102,8 @@ export default {
 			scrollCount: 1,
 			isDescending: true,
 			isAllUsersSelected: false,
-			selectedUsersCount: 0,
 			selectedUsersIds: [],
+			selectedUsersCount: 0,
 			editedUser: {},
 			isModalOpen: false,
 		};
@@ -182,7 +182,10 @@ export default {
 			} else {
 				this.users = this.users.filter((user) => {
 					return !this.selectedUsersIds.includes(user.id)
-				})
+				});
+
+				this.selectedUsersIds = [];
+				this.selectedUsersCount = 0;
 			}
 
 			this.orderUsersByPermissions();

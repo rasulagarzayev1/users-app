@@ -11,6 +11,7 @@
 					name="search"
 					type="text"
 					placeholder="Search"
+					@keyup.enter="onUserSearched"
 				/>
 			</label>
 			<button
