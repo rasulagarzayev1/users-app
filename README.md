@@ -1,8 +1,6 @@
 # users-app
 ### Live version
 ```
-npm install
-```
 https://rasulagarzayev1.github.io/users-app/
 
 
